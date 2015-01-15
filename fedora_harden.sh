@@ -48,7 +48,7 @@ set_chkrootkit() {
 logwatch_reporter() {
     yum -y install logwatch
     # make it run weekly
-    mv /etc/cron.daily/0logwatch /etc/cron.weekly/    
+    mv /etc/cron.daily/0logwatch /etc/cron.weekly/
 }
 
 remove_atd() {
@@ -84,17 +84,17 @@ disable_postfix() {
 
 kernel_tuning() {
     sysctl kernel.randomize_va_space=1
-    
+
     # Enable IP spoofing protection
     sysctl net.ipv4.conf.all.rp_filter=1
 
     # Disable IP source routing
     sysctl net.ipv4.conf.all.accept_source_route=0
-    
+
     # Ignoring broadcasts request
     sysctl net.ipv4.icmp_echo_ignore_broadcasts=1
     sysctl net.ipv4.icmp_ignore_bogus_error_messages=1
-    
+
     # Make sure spoofed packets get logged
     sysctl net.ipv4.conf.all.log_martians=1
     sysctl net.ipv4.conf.default.log_martians=1
@@ -107,7 +107,7 @@ kernel_tuning() {
 
     # Disables the magic-sysrq key
     sysctl kernel.sysrq=0
-    
+
     # Turn off the tcp_timestamps
     sysctl net.ipv4.tcp_timestamps=0
 
@@ -116,7 +116,7 @@ kernel_tuning() {
 
     # Enable bad error message Protection
     sysctl net.ipv4.icmp_ignore_bogus_error_responses=1
-    
+
     # RELOAD WITH NEW SETTINGS
     sysctl -p
 }
