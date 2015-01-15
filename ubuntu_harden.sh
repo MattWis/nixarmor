@@ -104,9 +104,7 @@ harden_ssh(){
 logwatch_reporter() {
     apt-get --yes --force-yes install logwatch
     # make it run weekly
-    cd
-    cd ..
-    cd ..
+    cd /
     mv /etc/cron.daily/00logwatch /etc/cron.weekly/
 }
 
@@ -124,9 +122,7 @@ disable_avahi() {
 process_accounting() {
     # Linux process accounting keeps track of all sorts of details about which commands have been run on the server, who ran them, when, etc.
     apt-get --yes --force-yes install acct
-    cd
-    cd ..
-    cd ..
+    cd /
     touch /var/log/wtmp
     # To show users' connect times, run ac. To show information about commands previously run by users, run sa. To see the last commands run, run lastcomm.
     }
